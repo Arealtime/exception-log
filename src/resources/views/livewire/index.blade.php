@@ -1,25 +1,35 @@
 <div>
-    <div class="max-w-md mx-auto mt-8 p-6 bg-white shadow-lg rounded-lg">
+    <div class="max-w-2xl mx-auto p-2 bg-white shadow-lg rounded-lg">
         <h2 class="text-xl font-bold text-center mb-4">Search</h2>
 
         <form wire:submit.prevent="search">
-            <div class="mb-4 relative">
-                <label for="message" class="block text-sm font-medium text-gray-700">Error</label>
-                <input type="text" wire:model="message" id="message"
-                    class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg" placeholder="">
-                @if ($message)
-                    <span wire:click='clearSearch' class="text-red-500 cursor-pointer absolute bottom-3 right-3">x</span>
+            <div class="mb-4 flex gap-3 justify-center">
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                    <input type="text" wire:model="message" id="message"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg" placeholder="">
+                </div>
+                <div>
+                    <label for="url" class="block text-sm font-medium text-gray-700">Url</label>
+                    <input type="text" wire:model="url" id="url"
+                        class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg" placeholder="">
+                </div>
+            </div>
+            <div class="flex justify-center gap-3">
+                <button type="submit" class=" bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Search
+                </button>
+                @if ($message || $url)
+                    <button wire:click.prevent='clearSearch'
+                        class="cursor-pointer bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">x</button>
                 @endif
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                Search
-            </button>
 
         </form>
-       
+
     </div>
 
-    <div class="overflow-x-auto shadow-lg rounded-lg bg-white">
+    <div class="overflow-x-auto shadow-lg rounded-lg p-5 mt-2 bg-white">
         <table class="w-full">
             <thead class="bg-gray-100">
                 <tr>

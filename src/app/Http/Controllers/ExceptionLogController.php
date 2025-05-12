@@ -8,6 +8,6 @@ class ExceptionLogController extends Controller
 {
     public function index()
     {
-        return view('exception-log::app.index');
+        return view('exception-log::index');
     }
 }

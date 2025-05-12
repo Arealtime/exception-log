@@ -25,7 +25,7 @@ class ExceptionLogServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'exception-log');
 
 
-        Livewire::component('exception-log.exception-log-component', ExceptionLogComopnent::class);
+        Livewire::component('exception-log.index', ExceptionLogComopnent::class);
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
     }
