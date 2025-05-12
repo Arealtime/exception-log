@@ -2,8 +2,8 @@
 
 namespace Arealtime\ExceptionLog\App\Console\Commands;
 
+use Arealtime\ExceptionLog\App\Enums\ExceptionLogEnum;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -17,13 +17,13 @@ class ExceptionLog extends Command
         $name = $this->argument('name');
 
         switch ($name) {
-            case CommandTypeEnum::Help->value:
+            case ExceptionLogEnum::Help->value:
                 $this->help();
                 break;
-            case CommandTypeEnum::Migrate->value:
+            case ExceptionLogEnum::Migrate->value:
                 $this->migrate();
                 break;
-            case CommandTypeEnum::Config->value:
+            case ExceptionLogEnum::Config->value:
                 $this->config();
                 break;
             default:
@@ -32,6 +32,7 @@ class ExceptionLog extends Command
     }
 
     private function help() {}
+    
     private function migrate()
     {
         $path = 'vendor/arealtime/exception-log/src/database/migrations';

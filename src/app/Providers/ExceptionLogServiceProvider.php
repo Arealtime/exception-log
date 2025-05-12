@@ -4,8 +4,10 @@ namespace Arealtime\ExceptionLog\App\Providers;
 
 use Arealtime\ExceptionLog\App\Console\Commands\ExceptionLog;
 use Arealtime\ExceptionLog\App\Exceptions\ExceptionLogExceptionHandler;
+use Arealtime\ExceptionLog\App\Http\Livewire\ExceptionLogComopnent;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class ExceptionLogServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,11 @@ class ExceptionLogServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'exception-log');
 
+
+        Livewire::component('exception-log.exception-log-component', ExceptionLogComopnent::class);
+
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
     }
 }

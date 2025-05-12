@@ -1,8 +1,8 @@
 <?php
 
-namespace Arealtime\ExceptionLog\App\Console\Commands;
+namespace Arealtime\ExceptionLog\App\Enums;
 
-enum CommandTypeEnum: string
+enum ExceptionLogEnum: string
 {
     case Help = 'help';
     case Migrate = 'migrate';
