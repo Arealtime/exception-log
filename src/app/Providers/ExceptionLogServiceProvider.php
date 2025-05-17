@@ -18,12 +18,20 @@ class ExceptionLogServiceProvider extends ServiceProvider
         $this->app->extend(ExceptionHandler::class, function ($handler) {
             return new ExceptionLogExceptionHandler($handler);
         });
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/arealtime-exception-log.php',
+            'arealtime-exception-log'
+        );
     }
 
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'exception-log');
 
+        $this->publishes([
+            __DIR__ . '/../../config/arealtime-exception-log.php' => config_path('arealtime-exception-log.php'),
+        ], 'arealtime-exception-log-config');
 
         Livewire::component('exception-log.index', ExceptionLogComopnent::class);
 
